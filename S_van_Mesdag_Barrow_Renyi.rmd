@@ -1,0 +1,376 @@
+<!-- R Commander Markdown Template -->
+  
+  Replace with Main Title
+=======================
+  
+  ### Savanna
+  
+  ### `r as.character(Sys.Date())`
+  
+  ```{r echo=FALSE}
+# include this code chunk as-is to set options
+knitr::opts_chunk$set(comment=NA, prompt=TRUE, out.width=750, fig.height=8, fig.width=8)
+library(Rcmdr)
+library(car)
+library(RcmdrMisc)
+```
+## Please modify this section of the code to change to your own directory. Make absolutely sure that you have all 
+#of the relevant associated data files in your directory as well.
+
+```{r}
+setwd("C:/Users/Savanna/Documents/1NewRDirectory")
+```
+
+
+
+
+```{r}
+BarrowPlantSpecies <- read.csv("BarrowPlantSpecies.csv")
+```
+
+
+```{r}
+str(BarrowPlantSpecies)
+```
+
+```{r}
+PlantChemistry <- read.csv("BarrowPlantChemistry.csv")
+```
+
+
+```{r}
+str(PlantChemistry)
+```
+
+
+```{r}
+BarrowPlantChemistry <- read.csv("BarrowPlantChemistry.csv")
+```
+
+
+```{r}
+str(BarrowPlantChemistry)
+```
+
+#Converting to dataframes for analyses
+
+```{r}
+BarrowPlantSpecies1 <- data.frame(BarrowPlantSpecies)
+```
+
+```{r}
+BarrowPlantChemistry1 <- data.frame(BarrowPlantChemistry)
+```
+
+#Running the first of several analyses to determine biodiversity levels in different concentrations of specific elements,
+#as well as in different pH levels for the Barrow data
+
+```{r}
+BarrowPlantChemistry1$pH_level <- as.factor(BarrowPlantChemistry1$pH_level)
+```
+
+
+```{r}
+Barrow.pH <- renyicomp(BarrowPlantSpecies1, y=BarrowPlantChemistry1, factor = 'pH_level',
+                       scales=c(0, 0.25, 0.5, 1, 2, 4, 8, Inf), permutations=100, plotit=F)
+```
+
+```{r}
+summary(Barrow.pH)
+```
+
+```{r}
+Barrow.pH
+```
+
+```{r}
+BarrowPlantChemistry1$Al2O3 <- as.factor(BarrowPlantChemistry1$Al2O3)
+```
+
+
+```{r}
+BarrowAl2O3 <- renyicomp(BarrowPlantSpecies1, y=BarrowPlantChemistry1, factor = 'Al2O3',
+                         scales=c(0, 0.25, 0.5, 1, 2, 4, 8, Inf), permutations=100, plotit=F)
+```
+
+```{r}
+summary(BarrowAl2O3)
+```
+
+```{r}
+BarrowAl2O3
+```
+
+```{r}
+BarrowPlantChemistry1$MgO <- as.factor(BarrowPlantChemistry1$MgO)
+```
+
+
+```{r}
+Barrow.MgO <- renyicomp(BarrowPlantSpecies1, y=BarrowPlantChemistry1, factor = 'MgO',
+                        scales=c(0, 0.25, 0.5, 1, 2, 4, 8, Inf), permutations=100, plotit=F)
+```
+
+```{r}
+summary(Barrow.MgO)
+```
+
+```{r}
+Barrow.MgO
+```
+
+
+```{r}
+BarrowPlantChemistry1$CaO <- as.factor(BarrowPlantChemistry1$CaO)
+```
+
+```{r}
+Barrow.CaO <- renyicomp(BarrowPlantSpecies1, y=BarrowPlantChemistry1, factor = 'CaO',
+                        scales=c(0, 0.25, 0.5, 1, 2, 4, 8, Inf), permutations=100, plotit=F)
+```
+
+```{r}
+summary(Barrow.CaO)
+```
+
+```{r}
+Barrow.CaO
+```
+
+```{r}
+BarrowPlantChemistry1$Fe2O3 <- as.factor(BarrowPlantChemistry1$Fe2O3)
+```
+
+```{r}
+Barrow.Fe2O3 <- renyicomp(BarrowPlantSpecies1, y=BarrowPlantChemistry1, factor = 'Fe2O3',
+                          scales=c(0, 0.25, 0.5, 1, 2, 4, 8, Inf), permutations=100, plotit=F)
+```
+
+```{r}
+summary(Barrow.Fe2O3)
+```
+
+```{r}
+Barrow.Fe2O3
+```
+
+```{r}
+BarrowPlantChemistry1$Na2O <- as.factor(BarrowPlantChemistry1$Na2O)
+```
+
+```{r}
+Barrow.Na2O <- renyicomp(BarrowPlantSpecies1, y=BarrowPlantChemistry1, factor = 'Na2O',
+                         scales=c(0, 0.25, 0.5, 1, 2, 4, 8, Inf), permutations=100, plotit=F)
+```
+
+```{r}
+summary(Barrow.Na2O)
+```
+
+```{r}
+Barrow.Na2O
+```
+
+```{r}
+BarrowPlantChemistry1$K2O <- as.factor(BarrowPlantChemistry1$K2O)
+```
+
+```{r}
+Barrow.K2O <- renyicomp(BarrowPlantSpecies1, y=BarrowPlantChemistry1, factor = 'K2O',
+                        scales=c(0, 0.25, 0.5, 1, 2, 4, 8, Inf), permutations=100, plotit=F)
+```
+
+```{r}
+summary(Barrow.K2O)
+```
+
+```{r}
+Barrow.K2O
+```
+
+```{r}
+BarrowPlantChemistry1$Cr2O3 <- as.factor(BarrowPlantChemistry1$Cr2O3)
+```
+
+```{r}
+Barrow.Cr2O3 <- renyicomp(BarrowPlantSpecies1, y=BarrowPlantChemistry1, factor = 'Cr2O3',
+                          scales=c(0, 0.25, 0.5, 1, 2, 4, 8, Inf), permutations=100, plotit=F)
+```
+
+```{r}
+summary(Barrow.Cr2O3)
+```
+
+```{r}
+Barrow.Cr2O3
+```
+
+```{r}
+BarrowPlantChemistry1$TiO2 <- as.factor(BarrowPlantChemistry1$TiO2)
+```
+
+```{r}
+Barrow.TiO2 <- renyicomp(BarrowPlantSpecies1, y=BarrowPlantChemistry1, factor = 'TiO2',
+                         scales=c(0, 0.25, 0.5, 1, 2, 4, 8, Inf), permutations=100, plotit=F)
+```
+
+```{r}
+summary(Barrow.TiO2)
+```
+
+```{r}
+Barrow.TiO2
+```
+
+```{r}
+BarrowPlantChemistry1$MnO <- as.factor(BarrowPlantChemistry1$MnO)
+```
+
+```{r}
+Barrow.MnO <- renyicomp(BarrowPlantSpecies1, y=BarrowPlantChemistry1, factor = 'MnO',
+                        scales=c(0, 0.25, 0.5, 1, 2, 4, 8, Inf), permutations=100, plotit=F)
+```
+
+```{r}
+summary(Barrow.MnO)
+```
+
+```{r}
+Barrow.MnO
+```
+
+```{r}
+BarrowPlantChemistry1$P2O5 <- as.factor(BarrowPlantChemistry1$P2O5)
+```
+
+```{r}
+Barrow.P2O5 <- renyicomp(BarrowPlantSpecies1, y=BarrowPlantChemistry1, factor = 'P2O5',
+                         scales=c(0, 0.25, 0.5, 1, 2, 4, 8, Inf), permutations=100, plotit=F)
+```
+
+```{r}
+summary(Barrow.P2O5)
+```
+
+```{r}
+Barrow.P2O5
+```
+
+```{r}
+BarrowPlantChemistry1$SrO <- as.factor(BarrowPlantChemistry1$SrO)
+```
+
+```{r}
+Barrow.SrO <- renyicomp(BarrowPlantSpecies1, y=BarrowPlantChemistry1, factor = 'SrO',
+                        scales=c(0, 0.25, 0.5, 1, 2, 4, 8, Inf), permutations=100, plotit=F)
+```
+
+```{r}
+summary(Barrow.SrO)
+```
+
+```{r}
+Barrow.SrO
+```
+
+```{r}
+BarrowPlantChemistry1$BaO <- as.factor(BarrowPlantChemistry1$BaO)
+```
+
+```{r}
+Barrow.BaO <- renyicomp(BarrowPlantSpecies1, y=BarrowPlantChemistry1, factor = 'BaO',
+                        scales=c(0, 0.25, 0.5, 1, 2, 4, 8, Inf), permutations=100, plotit=F)
+```
+
+```{r}
+summary(Barrow.BaO)
+```
+
+```{r}
+Barrow.BaO
+```
+
+```{r}
+BarrowPlantChemistry1$As <- as.factor(BarrowPlantChemistry1$As)
+```
+
+```{r}
+Barrow.As <- renyicomp(BarrowPlantSpecies1, y=BarrowPlantChemistry1, factor = 'As',
+                       scales=c(0, 0.25, 0.5, 1, 2, 4, 8, Inf), permutations=100, plotit=F)
+```
+
+```{r}
+summary(Barrow.As)
+```
+
+```{r}
+Barrow.As
+```
+
+```{r}
+BarrowPlantChemistry1$Co <- as.factor(BarrowPlantChemistry1$Co)
+```
+
+```{r}
+Barrow.Co <- renyicomp(BarrowPlantSpecies1, y=BarrowPlantChemistry1, factor = 'Co',
+                       scales=c(0, 0.25, 0.5, 1, 2, 4, 8, Inf), permutations=100, plotit=F)
+```
+
+```{r}
+summary(Barrow.Co)
+```
+
+```{r}
+Barrow.Co
+```
+
+```{r}
+BarrowPlantChemistry1$Pb <- as.factor(BarrowPlantChemistry1$Pb)
+```
+
+```{r}
+Barrow.Pb <- renyicomp(BarrowPlantSpecies1, y=BarrowPlantChemistry1, factor = 'Pb',
+                       scales=c(0, 0.25, 0.5, 1, 2, 4, 8, Inf), permutations=100, plotit=F)
+```
+
+```{r}
+summary(Barrow.Pb)
+```
+
+```{r}
+Barrow.Pb
+```
+
+```{r}
+BarrowPlantChemistry1$S <- as.factor(BarrowPlantChemistry1$S)
+```
+
+```{r}
+Barrow.S <- renyicomp(BarrowPlantSpecies1, y=BarrowPlantChemistry1, factor = 'S',
+                      scales=c(0, 0.25, 0.5, 1, 2, 4, 8, Inf), permutations=100, plotit=F)
+```
+
+```{r}
+summary(Barrow.S)
+```
+
+```{r}
+Barrow.S
+```
+
+```{r}
+BarrowPlantChemistry1$V <- as.factor(BarrowPlantChemistry1$V)
+```
+
+```{r}
+Barrow.V <- renyicomp(BarrowPlantSpecies1, y=BarrowPlantChemistry1, factor = 'V',
+                      scales=c(0, 0.25, 0.5, 1, 2, 4, 8, Inf), permutations=100, plotit=F)
+```
+
+```{r}
+summary(Barrow.V)
+```
+
+```{r}
+Barrow.V
+```
